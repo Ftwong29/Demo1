@@ -1,0 +1,36 @@
+.upload-excel {
+    max-width: 100%; /* Allow the container to take up full width */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upload-excel h2 {
+    text-align: center;
+  }
+  
+  .table-container {
+    max-height: 400px; /* Limit the height to 400px */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  table {
+    width: auto; /* Auto width allows the table to resize based on its content */
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #f0f2f5;
+  }
+  

@@ -1,0 +1,248 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+  }
+  
+  body, html {
+    height: 100%;
+    width: 100%;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:visited {
+    color: inherit; /* Prevent purple visited link color */
+  }
+  
+  .dashboard-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Sidebar Styling */
+  .sidebar {
+    width: 280px; /* Increased width for the sidebar */
+    background-color: #1e2a38;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0); /* Sidebar is visible */
+  }
+  
+  .sidebar.closed {
+    transform: translateX(-100%); /* Sidebar is hidden */
+  }
+  
+  .sidebar-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #f4f4f4;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-item {
+    margin: 15px 0;
+    padding: 10px 15px;
+    background-color: #1e2a38;
+    color: #cdd3d8;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+  }
+  
+  .menu-item.active {
+    color: #ffffff;
+  }
+  
+  .menu-item.active > a {
+    color: #00bcd4; /* Parent active text color */
+  }
+  
+  .menu-item:hover {
+    transform: scale(1.05); /* Slight zoom-in effect */
+    font-weight: bold; /* Make text bold on hover */
+  }
+  
+  .menu-item .icon {
+    margin-right: 10px;
+  }
+  
+  /* Arrow Icon Styling for Menu Items with Submenus */
+  .menu-item .arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-item.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow when the submenu is expanded */
+  }
+  
+  /* Submenu Styling */
+  .submenu {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+  }
+  
+  .menu-item.active .submenu {
+    max-height: 500px;
+    opacity: 1;
+  }
+  
+  .submenu-item {
+    margin: 5px 0;
+    padding-left: 5px;
+    /* border-left: 3px solid #00bcd4; Add a border to the left of each submenu item */
+  }
+  
+  .submenu-item a {
+    text-decoration: none;
+    color: #cdd3d8; /* Default submenu item text color */
+    padding: 8px 10px;
+    display: block;
+    background-color: transparent; /* Ensure no background color for cleaner look */
+    border-bottom: 1px solid #364254; /* Border at the bottom of each submenu item */
+    transition: color 0.3s ease;
+  }
+  
+  /* Active submenu text color */
+  .submenu-item.active a {
+    color: #00bcd4; /* Change text color for active submenu item */
+  }
+  
+  .submenu-item a:hover {
+    transform: scale(1.05); /* Slight zoom-in effect */
+    font-weight: bold; /* Make text bold on hover */
+  }
+
+  /* Main Layout (Header + Content) */
+  .main-layout {
+    margin-left: 280px; /* Match the sidebar width */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  .main-layout.expanded {
+    margin-left: 0;
+  }
+  
+  .header {
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .toggle-sidebar-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-right: 20px;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    background-color: #f0f2f5;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .content-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 200px;
+    }
+  
+    .main-layout {
+      margin-left: 200px;
+    }
+  
+    .main-layout.expanded {
+      margin-left: 0;
+    }
+  
+    .header {
+      height: 60px;
+    }
+  
+    .main-content {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .dashboard-layout {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  
+    .main-layout {
+      margin-left: 0;
+    }
+  
+    .header {
+      height: 60px;
+    }
+  }
+  
